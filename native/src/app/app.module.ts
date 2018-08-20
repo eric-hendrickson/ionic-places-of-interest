@@ -10,6 +10,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MapsProvider } from '../providers/maps/maps';
 
+import { Geolocation } from '@ionic-native/geolocation';
+
 @NgModule({
 	declarations: [
 		MyApp,
@@ -19,6 +21,7 @@ import { MapsProvider } from '../providers/maps/maps';
 	imports: [
 		BrowserModule,
 		IonicModule.forRoot(MyApp),
+		
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
@@ -30,7 +33,8 @@ import { MapsProvider } from '../providers/maps/maps';
 		StatusBar,
 		SplashScreen,
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
-    MapsProvider
+		MapsProvider,
+		Geolocation
 	]
 })
 export class AppModule { }
