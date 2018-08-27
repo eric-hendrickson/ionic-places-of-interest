@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MapsProvider } from '../providers/maps/maps';
 
 import { Geolocation } from '@ionic-native/geolocation';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
 	declarations: [
@@ -21,7 +22,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 	imports: [
 		BrowserModule,
 		IonicModule.forRoot(MyApp),
-		
+		HttpClientModule
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
