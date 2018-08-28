@@ -25,6 +25,7 @@ export class MapsProvider {
 	};
 	infowindow: any;
 	locations: any[] = [];
+	service: any;
 
 	constructor(
 		public http: HttpClient, 
@@ -45,8 +46,8 @@ export class MapsProvider {
 			});
 
 			infowindow = new google.maps.InfoWindow();
-			let service = new google.maps.places.PlacesService(map);
-			service.nearbySearch({
+			this.service = new google.maps.places.PlacesService(map);
+			this.service.nearbySearch({
 				location: this.position,
 				radius: 500,
 				type: ['store']

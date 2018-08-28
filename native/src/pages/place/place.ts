@@ -17,7 +17,7 @@ export class PlacePage {
 	) {
 		const item = this.navParams.get('item');
 		this.placeData = this.mapsProvider.getLocation(item.index);
-		console.log(this.placeData.name)
+		console.log(JSON.stringify(this.placeData, null, 2))
 	}
 
 }
