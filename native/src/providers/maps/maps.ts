@@ -22,6 +22,7 @@ export class MapsProvider {
 	latitude: Number = 0;
 	longitude: Number = 0;
 	infowindow: any;
+	locations: any[] = [];
 
 	constructor(
 		public http: HttpClient, 
@@ -30,11 +31,8 @@ export class MapsProvider {
 		console.log('Hello MapsProvider Provider');
 	}
 
-	do() {
-		console.log('do maps')
-	}
-
 	initMap() {
+		this.locations = [];
 		this.geolocation.getCurrentPosition(options).then((resp) => {
 			this.latitude = resp.coords.latitude;
 			this.longitude = resp.coords.longitude;
@@ -74,6 +72,15 @@ export class MapsProvider {
 			infowindow.setContent(place.name);
 			infowindow.open(map, this);
 		});
+
+		this.locations.push({
+			map: map,
+			postion: placeLoc,
+			name: place.name
+		});
 	}
 
+	getLocations() {
+		return this.locations;
+	}
 }
