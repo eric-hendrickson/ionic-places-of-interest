@@ -19,8 +19,10 @@ const options = {
 */
 @Injectable()
 export class MapsProvider {
-	latitude: Number = 0;
-	longitude: Number = 0;
+	position: any = {
+		lat: 0,
+		lng: 0
+	};
 	infowindow: any;
 	locations: any[] = [];
 
@@ -28,25 +30,24 @@ export class MapsProvider {
 		public http: HttpClient, 
 		private geolocation: Geolocation,
 	) {
-		console.log('Hello MapsProvider Provider');
 	}
 
 	initMap() {
 		this.locations = [];
 		this.geolocation.getCurrentPosition(options).then((resp) => {
-			this.latitude = resp.coords.latitude;
-			this.longitude = resp.coords.longitude;
-			console.log('current position')
-			console.log(this.latitude + ' ' + this.longitude)
+			this.position = {
+				lat: resp.coords.latitude,
+				lng: resp.coords.longitude
+			};
 			map = new google.maps.Map(document.getElementById('map'), {
-				center: { lat: this.latitude, lng: this.longitude },
+				center: this.position,
 				zoom: 15
 			});
 
 			infowindow = new google.maps.InfoWindow();
 			let service = new google.maps.places.PlacesService(map);
 			service.nearbySearch({
-				location: { lat: this.latitude, lng: this.longitude },
+				location: this.position,
 				radius: 500,
 				type: ['store']
 			}, (results, status) => {
@@ -73,11 +74,7 @@ export class MapsProvider {
 			infowindow.open(map, this);
 		});
 
-		this.locations.push({
-			map: map,
-			postion: placeLoc,
-			name: place.name
-		});
+		this.locations.push(place);
 	}
 
 	getLocations() {
