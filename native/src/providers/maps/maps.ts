@@ -80,4 +80,8 @@ export class MapsProvider {
 	getLocations() {
 		return this.locations;
 	}
+
+	getLocation(index) {
+		return this.locations[index];
+	}
 }

@@ -26,6 +26,7 @@ export class ListPage {
 		for (let i = 1; i < locations.length; i++) {
 			this.items.push({
 				title: locations[i].name,
+				index: i
 			});
 		}
 	}
