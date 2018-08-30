@@ -15,6 +15,13 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthProvider } from '../providers/auth/auth';
 
+export function tokenOptionsFactory(storage: Storage) {
+	return {
+		tokenGetter: () => storage.get('token'),
+		whitelistedDomains: ['localhost:3000']
+	  }
+}
+
 @NgModule({
 	declarations: [
 		MyApp,
