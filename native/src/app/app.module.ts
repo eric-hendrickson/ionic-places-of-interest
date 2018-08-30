@@ -13,7 +13,7 @@ import { MapsProvider } from '../providers/maps/maps';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { HttpClientModule } from '@angular/common/http';
-import { UsersProvider } from '../providers/users/users';
+import { AuthProvider } from '../providers/auth/auth';
 
 @NgModule({
 	declarations: [
@@ -38,9 +38,9 @@ import { UsersProvider } from '../providers/users/users';
 		StatusBar,
 		SplashScreen,
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
-		MapsProvider,
 		Geolocation,
-    UsersProvider
+		MapsProvider,
+		AuthProvider
 	]
 })
 export class AppModule { }
