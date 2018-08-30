@@ -13,7 +13,6 @@ import { MapsProvider } from '../providers/maps/maps';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthProvider } from '../providers/auth/auth';
 
 export function tokenOptionsFactory(storage: Storage) {
 	return {
@@ -46,8 +45,7 @@ export function tokenOptionsFactory(storage: Storage) {
 		SplashScreen,
 		{ provide: ErrorHandler, useClass: IonicErrorHandler },
 		Geolocation,
-		MapsProvider,
-		AuthProvider
+		MapsProvider
 	]
 })
 export class AppModule { }
